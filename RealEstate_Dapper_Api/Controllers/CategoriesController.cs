@@ -23,32 +23,29 @@ namespace RealEstate_Dapper_Api.Controllers
             var values = await _categoryRepository.GetAllCategoryAsync();
             return Ok(values);
         }
-        [HttpPost]
 
+        [HttpPost]
         public async Task<IActionResult> CreateCategory(CreateCategoryDto createCategoryDto)
         {
             _categoryRepository.CreateCategory(createCategoryDto);
             return Ok("Kategori Başarılı Şekilde Eklendi");
-
         }
 
-        [HttpDelete]
-
+        [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteCategory(int id)
         {
             _categoryRepository.DeleteCategory(id);
-            return Ok("Kategori Başarılı Şekilde Silindi");
-
+            return Ok("Kategori Başarılı Bir Şekilde Silindi");
         }
-        [HttpPut]
 
-        public async Task<IActionResult> UpdateCategory(UpdateCategoryDto updateCategoryDto)
+        [HttpPut]
+        public async Task<IActionResult> UptadeCategory(UpdateCategoryDto updateCategoryDto)
         {
             _categoryRepository.UptadeCategory(updateCategoryDto);
             return Ok("Kategori Başarılı Şekilde Güncellenmiştir");
-
         }
-        [HttpGet("id")]
+
+        [HttpGet("{id}")]
         public async Task<IActionResult> GetCategory(int id)
         {
             var value = await _categoryRepository.GetCategory(id);

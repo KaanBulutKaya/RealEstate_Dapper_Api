@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34330.188
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RealEstate_Dapper_Api", "RealEstate_Dapper_Api\RealEstate_Dapper_Api.csproj", "{BF638C2D-B2C5-445F-A57E-A95B66B06541}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RealEstate_Dapper_Api", "RealEstate_Dapper_Api\RealEstate_Dapper_Api.csproj", "{BF638C2D-B2C5-445F-A57E-A95B66B06541}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReakEstate_Dapper_Ui", "ReakEstate_Dapper_Ui\ReakEstate_Dapper_Ui.csproj", "{3463892C-C868-47CD-BF09-306728B85426}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReakEstate_Dapper_Ui", "ReakEstate_Dapper_Ui\ReakEstate_Dapper_Ui.csproj", "{3463892C-C868-47CD-BF09-306728B85426}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

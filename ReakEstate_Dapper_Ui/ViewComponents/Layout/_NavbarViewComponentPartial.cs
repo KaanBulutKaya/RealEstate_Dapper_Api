@@ -6,7 +6,7 @@ namespace ReakEstate_Dapper_Ui.ViewComponents.Layout
     {
         public IViewComponentResult Invoke()
         {
-           return View();
+        return View(); 
         }
     }
 }
