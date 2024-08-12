@@ -1,11 +1,14 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.CodeAnalysis.Options;
+using ReakEstate_Dapper_Ui.Models;
 using ReakEstate_Dapper_Ui.Services;
 using System.IdentityModel.Tokens.Jwt;
 
 var builder = WebApplication.CreateBuilder(args);
 JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Remove("sub");
 
+builder.Services.Configure<ApiSettings>(builder.Configuration.GetSection("ApiSettingsKey"));
+
+builder.Services.AddScoped<ApiSettings>();
 
 // Add services to the container.
 builder.Services.AddHttpClient();
@@ -43,7 +46,6 @@ app.UseRouting();
 
 app.UseAuthentication();
 app.UseAuthorization();
-
 
 app.UseEndpoints(endpoints =>
 {

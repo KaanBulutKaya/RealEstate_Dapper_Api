@@ -1,0 +1,177 @@
+﻿@model List<ResultEmployeeDto>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_DefaultLayout.cshtml";
+}
+
+<section class="w3l-about-breadcrumb">
+    <div class="breadcrumb-bg breadcrumb-bg-about pt-5">
+        <div class="container pt-lg-5 py-3">
+        </div>
+    </div>
+</section>
+<section class="w3l-index3" id="about">
+    <div class="midd-w3 py-5">
+        <div class="container py-lg-5 py-md-4 py-2">
+            <div class="row">
+                <div class="col-lg-5 pr-lg-0">
+                    <div class="w3l-left-img2">
+                    </div>
+                </div>
+                <div class="col-lg-7 pl-lg-0">
+                    <div class="w3l-right-info">
+                        <h6 class="title-small">Hakkımızda</h6>
+                        <h3 class="title-big">Geniş Tecrübemiz</h3>
+                        <h5 class="mt-4">
+                            15 yılı aşkın tecrübemizle, dünya genelinde 70'ten fazla ülkede, 
+                            20.000'den fazla çalışanımızla hizmet veriyoruz. 
+                            Müşterilerimize en kaliteli hizmeti sunmak için sürekli olarak kendimizi geliştiriyor 
+                            ve yenilikçi çözümler üretiyoruz.
+                        </h5>
+                        <p class="mt-4">
+                            Her zaman mükemmellik ve müşteri memnuniyeti odaklı çalışıyoruz. 
+                            Uzun yıllara dayanan deneyimimizle, projelerinizi güvenle hayata geçirmenizi sağlıyoruz. 
+                            Gelişen teknolojileri ve sektördeki yenilikleri takip ederek, 
+                            en iyi sonuçları elde etmeniz için yanınızdayız.
+                        </p>
+                        <a href="#small-dialog1" class="popup-with-zoom-anim play-view d-block mt-md-5 mt-4">
+                            <span class="video-play-icon">
+                                <span class="fa fa-play"></span>
+                            </span>
+                            Tanıtım Videomuz
+                        </a>
+                        <!-- dialog itself, mfp-hide class is required to make dialog hidden -->
+                        <div id="small-dialog1" class="zoom-anim-dialog mfp-hide">
+                            <iframe src="https://www.youtube.com/embed/pPl3ZZdTP3g?si" frameborder="0" allowfullscreen=""></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="grids-area-hny main-cont-wthree-fea row mt-5 pt-lg-5 pt-5">
+
+                <div class="col-lg-4 col-md-6 grids-feature">
+                    <div class="area-box">
+                        <span class="fa fa-home"></span>
+                        <h4><a class="title-head">Güvenilir Rehberlik</a></h4>
+                        <p>Başarıya giden yolda, ihtiyaç duyduğunuz rehberliği ve desteği sağlamaktayız.</p>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 grids-feature mt-md-0 mt-4">
+                    <div class="area-box">
+                        <span class="fa fa-search-plus"></span>
+                        <h4><a class="title-head">Tanıdık Arama Deneyimi</a></h4>
+                        <p>
+                            Aradığınızı kolayca bulmanızı sağlayan hızlı ve kullanıcı dostu bir arama deneyimi sunuyoruz.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 grids-feature mt-lg-0 mt-4">
+                    <div class="area-box">
+                        <span class="fa fa-dollar"></span>
+                        <h4><a class="title-head">Kaliteye Verilen Değer</a></h4>
+                        <p>Yüksek standartlarımızla beklentilerinizi aşan, premium hizmetleri gururla sunuyoruz.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <section class="w3l-aboutblock2" id="why">
+        <div class="midd-w3 py-5">
+            <div class="container py-lg-5 py-md-4 py-2">
+                <div class="row">
+                    <div class="col-lg-6 left-wthree-img">
+                        <img src="~/starter/assets/images/about.jpg" alt="" class="img-fluid radius-image" />
+                    </div>
+                    <div class="col-lg-6 mt-lg-0 mt-5 align-self">
+                        <h6 class="title-small">Neden Biz?</h6>
+                        <h3 class="title-big">Üyelerimizin daha kârlı ve başarılı olmalarına yardımcı olmak için</h3>
+                        <p class="mt-4">
+                            İş danışmanlığı alanında 15 yılı aşkın deneyime sahibiz. Çalışmalarımız hakkında daha fazla bilgi edinin!
+                            Müşterilerimize en iyi sonuçları sunmak için her zaman yanınızdayız.
+                        </p>
+                        <ul class="w3l-right-book mt-lg-5 mt-4">
+                            <li><span class="fa fa-check" aria-hidden="true"></span>Satıcıların mülklerinden en yüksek değeri elde etmelerine yardımcı oluruz</li>
+                            <li><span class="fa fa-check" aria-hidden="true"></span>Satıcıların mülklerini adil bir şekilde fiyatlandırmalarını sağlarız</li>
+                            <li><span class="fa fa-check" aria-hidden="true"></span>Alıcıların ihtiyaçlarına uygun mülkü bulmalarına yardımcı oluruz</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="w3l-agentsblock py-5" id="team">
+        <div class="container py-lg-5 py-md-4 py-2">
+            <h6 class="title-small text-center">Ekibimiz</h6>
+            <h3 class="title-big text-center mb-lg-5 mb-4">Satış Temsilcilerimizle Tanışın</h3>
+            <!-- blok -->
+            <div class="row">
+
+                @foreach(var item in Model)
+                {
+                    <div class="col-lg-3 col-sm-6 column-item">
+                        <div class="users_box">
+                            <div class="user-avatar">
+                                <a href="#agent-single" class="avatar">
+                                    <img src="@item.ImageUrl" alt="" class="img-fluid w-100 radius-image">
+                                </a>
+                            </div>
+                            <div class="users_box_info">
+                                <p class="user_position">@item.Title</p>
+                                <h4 class="user_title agent">
+                                    <a href="#agent-single">@item.Name</a>
+                                </h4>
+                                <div class="user_meta user_phone">
+                                    <span class="phone-detail"> <a href="tel:@item.PhoneNumber">@item.PhoneNumber &</a></span>
+                                    <span class="phone-detail">@item.Mail</span>
+                                </div>
+                                <a href="mailto:@item.Mail" class="btn btn-outline-primary btn-style mt-4">
+                                    E-posta Gönder
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                }
+               
+
+            </div>
+        </div>
+    </div>
+
+    <!-- stats -->
+    <section class="w3l-stats py-5" id="stats">
+        <div class="gallery-inner container py-lg-5 py-md-4 py-2">
+            <div class="row stats-con">
+
+                <div class="col-md-3 col-6 stats_info counter_grid">
+                    <p class="counter">5012</p>
+                    <span class="plus">+</span><br>
+                    <h3>Satılan Ev Sayısı</h3>
+                </div>
+
+                <div class="col-md-3 col-6 stats_info counter_grid1">
+                    <p class="counter">256</p>
+                    <span class="plus">+</span><br>
+                    <h3>Kiralanan Ev Sayısı</h3>
+                </div>
+
+                <div class="col-md-3 col-6 stats_info counter_grid mt-md-0 mt-4">
+                    <p class="counter">1300</p>
+                    <span class="plus">+</span><br>
+                    <h3>Yakın Zamanda Satılan Ev Sayısı</h3>
+                </div>
+
+                <div class="col-md-3 col-6 stats_info counter_grid2 mt-md-0 mt-4">
+                    <p class="counter">145 </p>
+                    <span class="plus">k</span><br>
+                    <h3>Memnun Müşteri</h3>
+                </div>
+            </div>
+        </div>
+    </section>

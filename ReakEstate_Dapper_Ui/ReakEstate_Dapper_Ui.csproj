@@ -20,4 +20,11 @@
     <Folder Include="Areas\EstateAgent\Models\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Update="wwwroot\starter\images\sofia.jpg">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
 </Project>

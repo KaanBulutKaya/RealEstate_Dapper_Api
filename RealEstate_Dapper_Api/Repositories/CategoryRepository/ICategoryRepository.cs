@@ -5,9 +5,9 @@ namespace RealEstate_Dapper_Api.Repositories.CategoryRepository
     public interface ICategoryRepository
     {
         Task<List<ResultCategoryDto>> GetAllCategoryAsync();
-        void CreateCategory(CreateCategoryDto categoryDto);
-        void DeleteCategory(int id);
-        void UptadeCategory(UpdateCategoryDto categoryDTo);
+        Task CreateCategory(CreateCategoryDto categoryDto);
+        Task DeleteCategory(int id);
+        Task UptadeCategory(UpdateCategoryDto categoryDTo);
         Task<GetByIDCategoryDto> GetCategory(int id);
     }
 }

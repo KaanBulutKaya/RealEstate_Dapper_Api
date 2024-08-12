@@ -65,7 +65,7 @@ namespace RealEstate_Dapper_Api.Controllers
             return Ok(_statisticsRepository.DifferentCityCount());
         }
         [HttpGet("EmployeeNameByMaxProductCount")]
-        public IActionResult CityNameByMaxEmployeeNameByMaxProductCountProductCount()
+        public IActionResult EmployeeNameByMaxProductCount()
         {
             return Ok(_statisticsRepository.EmployeeNameByMaxProductCount());
         }

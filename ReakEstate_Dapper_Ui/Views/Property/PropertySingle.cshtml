@@ -14,7 +14,7 @@
     <div class="container">
         <ul class="breadcrumbs-custom-path">
             <li><a href="/Default/index/">Ana Sayfa</a></li>
-            <li class="active"><span class="fa fa-angle-right mx-2" aria-hidden="true"></span> İlanlar</li>
+            <li class="active"><span class="fa fa-angle-right mx-2" aria-hidden="true"></span><a href="/Property/index/"> İlanlar</a></li>
             <li class="active"><span class="fa fa-angle-right mx-2" aria-hidden="true"></span> İlan Detayları</li>
         </ul>
     </div>
@@ -27,7 +27,7 @@
                 <li>
                     <div class="listing-category"><span>@ViewBag.type</span></div>
                 </li>
-                <li><span class="fa fa-clock-o"></span> 5 months ago</li>
+                <li><span class="fa fa-clock-o"></span>@ViewBag.datediff Ay Önce Eklendi</li>
                 <li><span class="fa fa-eye"></span> 250 views</li>
             </ul>
         </div>
@@ -39,19 +39,19 @@
                 <li>
                     <p>@ViewBag.address @ViewBag.district / @ViewBag.city</p>
                 </li>
-                <li><span class="fa fa-bed"></span> 3 Beds</li>
+                <li><span class="fa fa-bed"></span> @ViewBag.bedCount Yatak Odası</li>
                 <li><span class="fa fa-bath"></span> @ViewBag.bathCount Banyo</li>
-                <li><span class="fa fa-share-square-o"></span> 1258 sqrft</li>
+                <li><span class="fa fa-share-square-o"></span> @ViewBag.size m2</li>
             </ul>
             <ul class="share-post">
-                <a href="#url" class="cost-estate m-o">@ViewBag.price</a>
+                <a href="#" class="cost-estate m-o">₺@ViewBag.price</a>
             </ul>
         </div>
         <div class="row">
             <div class="col-lg-8 w3l-news">
                 <div class="blog-single-post">
 
-                    @await Component.InvokeAsync("_PropertySliderComponentPartial")
+                    @await Component.InvokeAsync("_PropertySliderComponentPartial", new { id = ViewBag.i })
 
                     <div class="single-post-content">
                         <h3 class="post-content-title mb-3">İlan Açıklama</h3>
@@ -66,19 +66,17 @@
                                 <li><strong>İlan İd :</strong>@ViewBag.productId</li>
                                 <li><strong>Metrekare :</strong>@ViewBag.size</li>
                                 <li><strong>Oda Sayısı :</strong>@ViewBag.roomcount</li>
-                                <li><strong>Yatak Odası :</strong>@ViewBag.bedroomcount</li>
+                                <li><strong>Yatak Odası :</strong>@ViewBag.bedCount</li>
                                 <li><strong>Banyo Sayısı :</strong>@ViewBag.bathcount</li>
-                                <li><strong>Exterior material :</strong> Brick </li>
-                                <li><strong>Yapı Türü :</strong>Beton</li>
-                                <li><strong>Garages :</strong> 15 </li>
-                                <li><strong>Garaj Sayısı :</strong>@ViewBag.garagesize</li>
+                                <li><strong>Yapı Türü :</strong>@ViewBag.structureType</li>
+                                <li><strong>Garaj Sayısı :</strong>@ViewBag.garageCount</li>
                                 <li><strong>Fiyat :</strong>@ViewBag.price</li>
                                 <li><strong>Yapım Yılı :</strong>@ViewBag.buildyear</li>
                                 <li><strong>İlan Tarihi :</strong>@ViewBag.date.ToString("dd-MMM-yyyy")</li>
                             </ul>
                         </div>
 
-                        @await Component.InvokeAsync("_PropertyAmenityStatusTrueByPropertyIdComponentPartial")
+                        @await Component.InvokeAsync("_PropertyAmenityStatusTrueByPropertyIdComponentPartial", new { id = ViewBag.i })
 
                         </div>
 
@@ -100,7 +98,7 @@
                 </div>
             </div>
 
-            @await Component.InvokeAsync("_PropertyAppUserComponentPartial")
+            @await Component.InvokeAsync("_PropertyAppUserComponentPartial")  @* new { id = ViewBag.i } *@
 
         </div>
     </div>

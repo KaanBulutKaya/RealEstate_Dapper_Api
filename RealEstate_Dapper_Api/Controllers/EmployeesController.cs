@@ -8,11 +8,11 @@ namespace RealEstate_Dapper_Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class IEmployeesController : ControllerBase
+    public class EmployeesController : ControllerBase
     {
         private readonly IEmployeeRepository _employeeRepository;
 
-        public IEmployeesController(IEmployeeRepository employeeRepository)
+        public EmployeesController(IEmployeeRepository employeeRepository)
         {
             _employeeRepository = employeeRepository;
         }

@@ -2,14 +2,11 @@
     <div class="container">
         <nav class="navbar navbar-expand-lg stroke px-0">
             <h1>
-                <a class="navbar-brand" href="index.html">
+                <a class="navbar-brand" href="/Default/Index/">
                     <span class="fa fa-home"></span> Real Estate
                 </a>
             </h1>
-            <!-- if logo is image enable this
-            <a class="navbar-brand" href="#index.html">
-                <img src="image-path" alt="Your logo" title="Your logo" style="height:35px;" />
-            </a> -->
+
             <button class="navbar-toggler  collapsed bg-gradient" type="button" data-toggle="collapse"
                     data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false"
                     aria-label="Toggle navigation">
@@ -20,28 +17,29 @@
             <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
                 <ul class="navbar-nav ml-lg-5 mr-auto">
                     <li class="nav-item @@home__active">
-                        <a class="nav-link" href="/Default/Index/">Ana Sayfa <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="/Default/Index">Ana Sayfa <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item @@listing__active">
-                        <a class="nav-link" href="listing.html">İlanlar</a>
+                        <a class="nav-link" href="/HomeDealsOfTheDay/Index">Günün Fırsatı</a>
                     </li>
                     <li class="nav-item dropdown @@property__active">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Fırsatlar <span class="fa fa-angle-down"></span>
+                            İlanlar <span class="fa fa-angle-down"></span>
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item @@ps__active" href="property-single.html">Günün Fırsatı</a>
+                            <a class="dropdown-item @@ps__active" href="/Property/Index">Tüm İlanlar</a>
+                            <a class="dropdown-item @@ps__active" href="/HomePopularLocation/Index">Tüm Lokasyonlar</a>
                         </div>
                     </li>
                     <li class="nav-item @@listing__active">
-                        <a class="nav-link" href="listing.html">Hakkımızda</a>
+                        <a class="nav-link" href="/About/Index">Hakkımızda</a>
                     </li>
                     <li class="nav-item @@listing__active">
-                        <a class="nav-link" href="listing.html">Bize Yazın</a>
+                        <a class="nav-link" href="/Contact/Index">Bize Yazın</a>
                     </li>
                     <li class="nav-item @@listing__active">
-                        <a class="nav-link" href="listing.html">Giriş Yapın</a>
+                        <a class="nav-link" href="/Login/Index">Giriş Yapın</a>
                     </li>
                 </ul>
                 <div class="top-quote mt-lg-0">
@@ -50,15 +48,7 @@
                     </a>
                 </div>
                 <!--/search-right-->
-                <div class="search mx-3">
-                    <input class="search_box" type="checkbox" id="search_box">
-                    <label class="fa fa-search" for="search_box"></label>
-                    <div class="search_form">
-                        <form action="error.html" method="GET">
-                            <input type="text" placeholder="Search"><input type="submit" value="search">
-                        </form>
-                    </div>
-                </div>
+                @await Component.InvokeAsync("_NavbarViewComponentPartial")
                 <!--//search-right-->
             </div>
 

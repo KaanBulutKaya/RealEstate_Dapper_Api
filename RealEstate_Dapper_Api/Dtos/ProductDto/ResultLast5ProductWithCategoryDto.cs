@@ -9,6 +9,6 @@
         public string District { get; set; }
         public int ProductCategory { get; set; }
         public string CategoryName { get; set; }
-        public DateTime Advertisement { get; set; }
+        public DateTime AdvertisementDate { get; set; }
     }
 }

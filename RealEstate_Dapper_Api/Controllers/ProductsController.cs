@@ -74,5 +74,55 @@ namespace RealEstate_Dapper_Api.Controllers
             var values = await _productRepository.GetProductByProductId(id);
             return Ok(values);
         }
+        [HttpGet("ResultProductWithSearchList")]
+        public async Task<IActionResult> ResultProductWithSearchList(string searchKeyValue, int propertyCategoryId, string city)
+        {
+            var values= await _productRepository.resultProductWithSearchList(searchKeyValue, propertyCategoryId, city);
+            return Ok(values);
+        }
+        [HttpGet("ResultProductWithNavbarSearchList")]
+        public async Task<IActionResult> ResultProductWithNavbarSearchList(string searchKeyValue)
+        {
+            var values = await _productRepository.resultProductWithNavbarSearchList(searchKeyValue);
+            return Ok(values);
+        }
+        [HttpGet("GetProductByDealOfTheDayTrueWithCategory")]
+        public async Task<IActionResult> GetProductByDealOfTheDayTrueWithCategory()
+        {
+            var values = await _productRepository.GetProductByDealOfTheDayTrueWithCategoryAsync();
+            return Ok(values);
+
+		}
+        [HttpGet("Last3ProductList")]
+        public async Task<IActionResult> Last3ProductList()
+        {
+            var values = await _productRepository.GetLast3ProductAsync();
+            return Ok(values);
+        }
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteProduct(int id)
+        {
+            await _productRepository.DeleteProduct(id);
+            return Ok("Personel Başarılı Bir Şekilde Silindi");
+        }
+        [HttpPut]
+        public async Task<IActionResult> UptadeProduct(UpdateProductDto updateProductDto)
+        {
+            await _productRepository.UptadeProduct(updateProductDto);
+            return Ok("Personel Başarılı Bir Şekilde Güncellendi");
+        }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetProdcut(int id)
+        {
+            var value = await _productRepository.GetProdcut(id);
+            return Ok(value);
+        }
+        [HttpGet("GetProductByCityWithCategory")]
+        public async Task<IActionResult> GetProductByCityWithCategory(string city)
+        {
+            var values = await _productRepository.GetProductByCityWithCategoryAsync(city);
+            return Ok(values);
+        }
     }
 }

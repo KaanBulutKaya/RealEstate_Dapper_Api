@@ -11,10 +11,10 @@ namespace ReakEstate_Dapper_Ui.ViewComponents.PropertySingle
         {
             _httpClientFactory = httpClientFactory;
         }
-        public async Task<IViewComponentResult> InvokeAsync()
+        public async Task<IViewComponentResult> InvokeAsync(int id)
         {
             var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync("https://localhost:44350/api/PropertyAmenitys?id=1");
+            var responseMessage = await client.GetAsync("https://localhost:44350/api/PropertyAmenitys?id=" + id);
             if (responseMessage.IsSuccessStatusCode)
             {
                 var jsonData = await responseMessage.Content.ReadAsStringAsync();

@@ -26,10 +26,32 @@ namespace ReakEstate_Dapper_Ui.Controllers
             }
             return View();
         }
-        [HttpGet] 
-        public async Task<IActionResult> PropertySingle(int id)
+
+        public async Task<IActionResult> PropertyListWithSearch(string searchKeyValue, int propertyCategoryId, string city)
         {
-            id = 2;
+			ViewBag.searchKeyValue = TempData["searchKeyValue"];
+			ViewBag.propertyCategoryId = TempData["propertyCategoryId"];
+			ViewBag.city = TempData["city"];
+
+			searchKeyValue = TempData["searchKeyValue"].ToString();
+			propertyCategoryId = int.Parse(TempData["propertyCategoryId"].ToString());
+			city = TempData["city"].ToString();
+
+			var client = _httpClientFactory.CreateClient();
+			var responseMessage = await client.GetAsync($"https://localhost:44350/api/Products/ResultProductWithSearchList?searchKeyValue={searchKeyValue}&propertyCategoryId={propertyCategoryId}&city={city}");
+			if (responseMessage.IsSuccessStatusCode)
+			{
+				var jsonData = await responseMessage.Content.ReadAsStringAsync();
+				var values = JsonConvert.DeserializeObject<List<ResultProductWithSearchListDto>>(jsonData);
+				return View(values);
+			}
+			return View();
+		}
+
+        [HttpGet("property/{slug}/{id}")]
+        public async Task<IActionResult> PropertySingle(string slug,int id)
+        {
+            ViewBag.i = id;
             var client = _httpClientFactory.CreateClient();
             var responseMessage = await client.GetAsync("https://localhost:44350/api/Products/GetProductByProductId?id=" + id);
             var jsonData = await responseMessage.Content.ReadAsStringAsync();
@@ -40,34 +62,50 @@ namespace ReakEstate_Dapper_Ui.Controllers
             var jsonData2 = await responseMessage2.Content.ReadAsStringAsync();
             var values2 = JsonConvert.DeserializeObject<GetProductDetailByIdDto>(jsonData2);
 
-            ViewBag.productId=values.productID;
-            ViewBag.title1 = values.title.ToString();
-            ViewBag.price = values.price;
-            ViewBag.city = values.city;
-            ViewBag.district = values.district;
-            ViewBag.address = values.address;
-            ViewBag.type = values.type;
-            ViewBag.description = values.description;
-            ViewBag.date = values.AdvertisementDate;
+			ViewBag.productId = values.productID;
+			ViewBag.title1 = values.title.ToString();
+			ViewBag.price = values.price;
+			ViewBag.city = values.city;
+			ViewBag.district = values.district;
+			ViewBag.address = values.address;
+			ViewBag.type = values.type;
+			ViewBag.description = values.description;
+			ViewBag.slugUrl = values.slugUrl;
 
-            ViewBag.bathCount = values2.bathCount;
-            ViewBag.size = values2.productSize;
-            ViewBag.roomcount = values2.RoomCount;
-            ViewBag.bedroomcount=values2.bedRoomCount;
-            ViewBag.bathcount=values2.bathCount;
-            ViewBag.garagesize=values2.garageSize;
-            ViewBag.buildyear = values2.buildYear;
-            ViewBag.location = values2.location;
-            ViewBag.videourl=values2.videoUrl;
+			ViewBag.bathCount = values2.bathCount;
+			ViewBag.bedCount = values2.bedRoomCount;
+			ViewBag.size = values2.productSize;
+			ViewBag.roomCount = values2.roomCount;
+			ViewBag.garageCount = values2.garageSize;
+			ViewBag.buildYear = values2.buildYear;
+			ViewBag.date = values.advertisementDate;
+			ViewBag.location = values2.location;
+			ViewBag.videoUrl = values2.videoUrl;
+            ViewBag.structureType = values2.StructureType;
 
-            DateTime date1= DateTime.Now;
-            DateTime date2= values.AdvertisementDate;
 
-            TimeSpan timeSpan = date1-date2;
-            int month = timeSpan.Days;
+            DateTime date1 = DateTime.Now;
+			DateTime date2 = values.advertisementDate;
 
-            ViewBag.datediff = month / 30;
-            return View();
+			TimeSpan timeSpan = date1 - date2;
+			int month = timeSpan.Days;
+
+			ViewBag.datediff = month / 30;
+
+			string slugFromTitle = CreateSlug(values.title);
+			ViewBag.slugUrl = slugFromTitle;
+
+			return View();
+		}
+        private string CreateSlug(string title)
+        {
+            title = title.ToLowerInvariant(); // Küçük harfe çevir
+            title = title.Replace(" ", "-"); // Boşlukları tire ile değiştir
+            title = System.Text.RegularExpressions.Regex.Replace(title, @"[^a-z0-9\s-]", ""); // Geçersiz karakterleri kaldır
+            title = System.Text.RegularExpressions.Regex.Replace(title, @"\s+", " ").Trim(); // Birden fazla boşluğu tek boşluğa indir ve kenar boşluklarını kaldır
+            title = System.Text.RegularExpressions.Regex.Replace(title, @"\s", "-"); // Boşlukları tire ile değiştir
+
+            return title;
         }
     }
 }

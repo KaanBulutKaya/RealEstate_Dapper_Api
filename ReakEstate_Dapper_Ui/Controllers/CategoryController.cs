@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 using ReakEstate_Dapper_Ui.Dtos.CategoryDtos;
+using ReakEstate_Dapper_Ui.Models;
 using System.Text;
 
 namespace ReakEstate_Dapper_Ui.Controllers
@@ -8,15 +10,18 @@ namespace ReakEstate_Dapper_Ui.Controllers
     public class CategoryController : Controller
     {
         private readonly IHttpClientFactory _httpClientFactory;
-        public CategoryController(IHttpClientFactory httpClientFactory)
+        private readonly ApiSettings _apiSettings;
+        public CategoryController(IHttpClientFactory httpClientFactory, IOptions<ApiSettings> apiSettings)
         {
             _httpClientFactory = httpClientFactory;
+            _apiSettings = apiSettings.Value;
         }
 
         public async Task<IActionResult> Index()
         {
             var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync("https://localhost:44350/api/Categories");
+            client.BaseAddress = new Uri(_apiSettings.BaseUrl);
+            var responseMessage = await client.GetAsync("Categories");
             if (responseMessage.IsSuccessStatusCode)
             {
                 var jsonData = await responseMessage.Content.ReadAsStringAsync();
@@ -36,7 +41,8 @@ namespace ReakEstate_Dapper_Ui.Controllers
             var client = _httpClientFactory.CreateClient();
             var jsondate = JsonConvert.SerializeObject(createCategoryDto);
             StringContent stringContent = new StringContent(jsondate, Encoding.UTF8, "application/json");
-            var responseMessage = await client.PostAsync("https://localhost:44350/api/Categories", stringContent);
+            client.BaseAddress = new Uri(_apiSettings.BaseUrl);
+            var responseMessage = await client.PostAsync("Categories", stringContent);
             if (responseMessage.IsSuccessStatusCode)
             {             
                 return RedirectToAction("Index");
@@ -46,7 +52,8 @@ namespace ReakEstate_Dapper_Ui.Controllers
         public async Task<IActionResult> DeleteCategory(int id)
         {
             var client=_httpClientFactory.CreateClient();
-            var reponseMessage = await client.DeleteAsync($"https://localhost:44350/api/Categories/{id}");
+            client.BaseAddress = new Uri(_apiSettings.BaseUrl);
+            var reponseMessage = await client.DeleteAsync($"Categories{id}");
             if(reponseMessage.IsSuccessStatusCode)
             {
                 return RedirectToAction("Index");
@@ -57,7 +64,8 @@ namespace ReakEstate_Dapper_Ui.Controllers
         public async Task<IActionResult> UpdateCategory(int id)
         {
             var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync($"https://localhost:44350/api/Categories/{id}");
+            client.BaseAddress = new Uri(_apiSettings.BaseUrl);
+            var responseMessage = await client.GetAsync($"Categories{id}");
             if (responseMessage.IsSuccessStatusCode)
             {
                 var jsonData = await responseMessage.Content.ReadAsStringAsync();
@@ -72,7 +80,8 @@ namespace ReakEstate_Dapper_Ui.Controllers
             var client = _httpClientFactory.CreateClient();
             var jsonData = JsonConvert.SerializeObject(updateCategoryDto);
             StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
-            var responseMessage = await client.PutAsync("https://localhost:44350/api/Categories/", stringContent);
+            client.BaseAddress = new Uri(_apiSettings.BaseUrl);
+            var responseMessage = await client.PutAsync("Categories", stringContent);
             if (responseMessage.IsSuccessStatusCode)
             {
                 return RedirectToAction("Index");

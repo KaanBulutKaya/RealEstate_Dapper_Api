@@ -27,7 +27,7 @@ namespace ReakEstate_Dapper_Ui.Controllers
             if (token != null)
             {
                 var client = _httpClientFactory.CreateClient();
-                var responseMessage = await client.GetAsync("https://localhost:44350/api/IEmployees");
+                var responseMessage = await client.GetAsync("https://localhost:44350/api/Employees");
                 if (responseMessage.IsSuccessStatusCode)
                 {
                     var jsonData = await responseMessage.Content.ReadAsStringAsync();
@@ -48,7 +48,7 @@ namespace ReakEstate_Dapper_Ui.Controllers
             var client = _httpClientFactory.CreateClient();
             var jsonData = JsonConvert.SerializeObject(createEmployeeDto);
             StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
-            var responseMessage = await client.PostAsync("https://localhost:44350/api/IEmployees", stringContent);
+            var responseMessage = await client.PostAsync("https://localhost:44350/api/Employees", stringContent);
             if (responseMessage.IsSuccessStatusCode)
             {
                 return RedirectToAction("Index");
@@ -58,7 +58,7 @@ namespace ReakEstate_Dapper_Ui.Controllers
         public async Task<IActionResult> DeleteEmployee(int id)
         {
             var client = _httpClientFactory.CreateClient();
-            var reponseMessage = await client.DeleteAsync($"https://localhost:44350/api/IEmployees/{id}");
+            var reponseMessage = await client.DeleteAsync($"https://localhost:44350/api/Employees/{id}");
             if (reponseMessage.IsSuccessStatusCode)
             {
                 return RedirectToAction("Index");
@@ -69,7 +69,7 @@ namespace ReakEstate_Dapper_Ui.Controllers
         public async Task<IActionResult> UpdateEmployee(int id)
         {
             var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync($"https://localhost:44350/api/IEmployees/{id}");
+            var responseMessage = await client.GetAsync($"https://localhost:44350/api/Employees/{id}");
             if (responseMessage.IsSuccessStatusCode)
             {
                 var jsonData = await responseMessage.Content.ReadAsStringAsync();
@@ -84,7 +84,7 @@ namespace ReakEstate_Dapper_Ui.Controllers
             var client = _httpClientFactory.CreateClient();
             var jsonData = JsonConvert.SerializeObject(updateEmployeeDto);
             StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
-            var responseMessage = await client.PutAsync("https://localhost:44350/api/IEmployees/", stringContent);
+            var responseMessage = await client.PutAsync("https://localhost:44350/api/Employees/", stringContent);
             if (responseMessage.IsSuccessStatusCode)
             {
                 return RedirectToAction("Index");
