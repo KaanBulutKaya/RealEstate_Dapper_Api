@@ -3,5 +3,6 @@
     public class GetAppUserIDDtos
     {
         public int UserID { get; set; }
+        public int UserRole { get; set; }
     }
 }

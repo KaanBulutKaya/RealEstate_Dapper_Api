@@ -12,6 +12,9 @@ namespace RealEstate_Dapper_Api.Repositories.AppUserRepositories
         {
             _context = context;
         }
+
+        
+
         public async Task<GetAppUserByProductID> GetAppUserByProductID(int id)
         {
             string query = "Select * from AppUser Where UserID=@userID";

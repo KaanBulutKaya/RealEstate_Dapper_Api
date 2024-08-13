@@ -4,16 +4,17 @@ using ReakEstate_Dapper_Ui.Dtos.ContactDtos;
 
 namespace ReakEstate_Dapper_Ui.ViewComponents.DashBoard
 {
-    public class _NavbarLast:ViewComponent
+    public class _DashBoardLast4ContactListComponentPartial : ViewComponent
     {
         private readonly IHttpClientFactory _httpClientFactory;
-        public _NavbarLast(IHttpClientFactory httpClientFactory)
+        public _DashBoardLast4ContactListComponentPartial(IHttpClientFactory httpClientFactory)
         {
             _httpClientFactory = httpClientFactory;
         }
 
         public async Task<IViewComponentResult> InvokeAsync()
         {
+
             var client = _httpClientFactory.CreateClient();
             var responseMessage = await client.GetAsync("https://localhost:44350/api/Contact/GetLast4Contact");
             if (responseMessage.IsSuccessStatusCode)

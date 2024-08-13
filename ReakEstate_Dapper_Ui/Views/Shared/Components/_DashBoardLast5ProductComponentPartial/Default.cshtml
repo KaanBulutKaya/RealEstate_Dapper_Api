@@ -35,7 +35,7 @@
                         <td>@item.City</td>
                         <td>@item.CategoryName</td>
                         <td>@item.Price ₺</td>
-                        <td><a class="btn btn-sm btn-primary" href="">İlanı Gör</a></td>
+                            <td><a class="btn btn-sm btn-primary" href="@Url.Action("PropertySingle","Property",new {slug = item.SlugUrl, id = item.ProductID})">İlanı Gör</a></td>
                     </tr>
                     }
                 </tbody>

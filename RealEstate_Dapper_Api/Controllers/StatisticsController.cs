@@ -82,7 +82,7 @@ namespace RealEstate_Dapper_Api.Controllers
         [HttpGet("OldestBuildingYear")]
         public IActionResult OldestBuildingYear()
         {
-            return Ok(_statisticsRepository.PassiveCategoryCount());
+            return Ok(_statisticsRepository.OldestBuildingYear());
         }
         [HttpGet("PassiveCategoryCount")]
         public IActionResult PassiveCategoryCount()

@@ -4,6 +4,7 @@
     {
         public int ID { get; set; }
         public string UserName { get; set; }
+        public int URole { get; set; }
         public string Role { get; set; }
         public bool IsExist { get; set; }
     }

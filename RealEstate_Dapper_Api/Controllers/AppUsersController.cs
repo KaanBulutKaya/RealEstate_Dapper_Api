@@ -14,11 +14,14 @@ namespace RealEstate_Dapper_Api.Controllers
         {
             _appUserRepository = appUserRepository;
         }
+
+
         [HttpGet]
         public async Task<IActionResult> GetAppUserByProductID(int id)
         {
             var values = await _appUserRepository.GetAppUserByProductID(id);
             return Ok(values);
         }
+        
     }
 }
