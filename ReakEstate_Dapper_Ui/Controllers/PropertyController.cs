@@ -62,6 +62,8 @@ namespace ReakEstate_Dapper_Ui.Controllers
             var jsonData2 = await responseMessage2.Content.ReadAsStringAsync();
             var values2 = JsonConvert.DeserializeObject<GetProductDetailByIdDto>(jsonData2);
 
+            ViewBag.u = values.AppUserID;
+
 			ViewBag.productId = values.productID;
 			ViewBag.title1 = values.title.ToString();
 			ViewBag.price = values.price;
@@ -72,7 +74,7 @@ namespace ReakEstate_Dapper_Ui.Controllers
 			ViewBag.description = values.description;
 			ViewBag.slugUrl = values.slugUrl;
 
-			ViewBag.bathCount = values2.bathCount;
+			ViewBag.bathCount = values2.bathCount;//veri tabanı ve api kısmını yap "banyo"
 			ViewBag.bedCount = values2.bedRoomCount;
 			ViewBag.size = values2.productSize;
 			ViewBag.roomCount = values2.roomCount;

@@ -98,11 +98,16 @@
                 </div>
             </div>
 
-            @await Component.InvokeAsync("_PropertyAppUserComponentPartial", new { id = ViewBag.i })
+            <div class="sidebar-side col-lg-4 col-md-12 col-sm-12 mt-lg-0 mt-5">
+                <aside class="sidebar">
+
+                    @await Component.InvokeAsync("_PropertyAppUserComponentPartial", new { id = ViewBag.u })
 
 
-@*             @await Component.InvokeAsync("_PropertAppUserProductComponentPartial", new { id = ViewBag.i })
- *@
+                    @await Component.InvokeAsync("_PropertAppUserProductComponentPartial", new { id = ViewBag.u })
+
+                </aside>
+            </div>
         </div>
     </div>
 </section>
