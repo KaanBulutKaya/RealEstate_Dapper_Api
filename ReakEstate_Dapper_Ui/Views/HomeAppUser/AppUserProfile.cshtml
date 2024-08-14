@@ -1,0 +1,53 @@
+﻿
+@{
+    ViewData["Title"] = "AppUserProfile";
+    Layout = "~/Views/Shared/_DefaultLayout.cshtml";
+}
+
+
+<section class="w3l-about-breadcrumb">
+    <div class="breadcrumb-bg breadcrumb-bg-about pt-5">
+        <div class="container pt-lg-5 py-3">
+        </div>
+    </div>
+</section>
+
+<section class="w3l-aboutblock2" id="why">
+    <div class="midd-w3 py-5">
+        <div class="container py-lg-5 py-md-4 py-2">
+            <div class="row">
+                <div class="col-lg-6 left-wthree-img">
+                    <img src="@ViewBag.userImageUrl" alt="" class="img-fluid radius-image" />
+                </div>
+                <div class="col-lg-6 mt-lg-0 mt-5 align-self">
+                    <h6 class="title-small">---</h6>
+                    <h3 class="title-big">@ViewBag.name</h3>
+                    <p>
+                        <span class="fa fa-phone"></span> <strong>Tel :</strong>
+                        <a href="tel:@ViewBag.phoneNumber"> @ViewBag.phoneNumber</a>
+                    </p>
+                    <p>
+                        <span class="fa fa-envelope"></span> <strong>Email :</strong>
+                        <a href="mailto:@ViewBag.email"> @ViewBag.email</a>
+                    </p>                    
+                    <ul class="w3l-right-book mt-lg-5 mt-4">
+                        <li><a href="#url" class="twitter"><span class="fa fa-twitter"></span>  Twitter</a></li>
+                        <li><a href="#url" class="facebook"><span class="fa fa-facebook"></span>  Facebook</a></li>
+                        <li><a href="#url" class="linkedin"><span class="fa fa-youtube"></span>  Youtube</a></li>
+                        <li><a href="#url" class="instagram"><span class="fa fa-instagram"></span>  Instagram</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+@await Component.InvokeAsync("_AppUserIDListProduct", new { id = ViewBag.i })
+
+
+
+            
+
+
+

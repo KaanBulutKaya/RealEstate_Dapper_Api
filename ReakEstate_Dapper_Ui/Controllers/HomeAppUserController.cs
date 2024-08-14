@@ -25,5 +25,24 @@ namespace ReakEstate_Dapper_Ui.Controllers
             return View();
 
         }
+
+
+        [HttpGet("AppUserProfile/{UserProfileID}")]
+        public async Task<IActionResult> AppUserProfile(int UserProfileID)
+        {
+            ViewBag.i = UserProfileID;
+
+            var client = _httpClientFactory.CreateClient();
+            var responseMessage = await client.GetAsync("https://localhost:44350/api/AppUsersList/GetAppUserByProductListID?id=" + UserProfileID);
+            var jsonData = await responseMessage.Content.ReadAsStringAsync();
+            var values = JsonConvert.DeserializeObject<ResultAppUserProductDto>(jsonData);
+
+            ViewBag.userId = values.UserID;
+            ViewBag.name = values.Name;
+            ViewBag.email = values.Email;
+            ViewBag.phoneNumber = values.PhoneNumber;
+            ViewBag.userImageUrl = values.UserImageUrl;
+            return View();
+        }
     }
 }

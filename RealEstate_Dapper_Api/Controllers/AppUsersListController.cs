@@ -22,7 +22,12 @@ namespace RealEstate_Dapper_Api.Controllers
             var values = await _appUserListRepository.GetAppUserByProduct();
             return Ok(values);
         }
-
+        [HttpGet("GetAppUserByProductListID")]
+        public async Task<IActionResult> GetAppUserByProductListID(int id)
+        {
+            var values = await _appUserListRepository.GetAppUserByProductListID(id);
+            return Ok(values);
+        }
 
     }
 }

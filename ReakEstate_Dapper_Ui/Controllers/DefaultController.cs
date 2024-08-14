@@ -2,7 +2,6 @@
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 using ReakEstate_Dapper_Ui.Dtos.CategoryDtos;
-using ReakEstate_Dapper_Ui.Dtos.PopularLocationDtos;
 using ReakEstate_Dapper_Ui.Models;
 
 namespace ReakEstate_Dapper_Ui.Controllers

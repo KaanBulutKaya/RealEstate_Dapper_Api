@@ -22,6 +22,7 @@ namespace RealEstate_Dapper_Api.Repositories.ProductRepository
         Task DeleteProduct(int id);
         Task UptadeProduct(UpdateProductDto updateProductDto);
         Task<GetByIDProductDto> GetProdcut(int id);
+        Task<List<GetProductByProductIdDto>> GetProdcutByAppUserID(int id);
         Task<List<ResultProductWithCategoryDto>> GetProductByCityWithCategoryAsync(string city);
 
 

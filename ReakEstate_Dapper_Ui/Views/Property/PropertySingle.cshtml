@@ -98,8 +98,11 @@
                 </div>
             </div>
 
-            @await Component.InvokeAsync("_PropertyAppUserComponentPartial")  @* new { id = ViewBag.i } *@
+            @await Component.InvokeAsync("_PropertyAppUserComponentPartial", new { id = ViewBag.i })
 
+
+@*             @await Component.InvokeAsync("_PropertAppUserProductComponentPartial", new { id = ViewBag.i })
+ *@
         </div>
     </div>
 </section>

@@ -1,0 +1,29 @@
+﻿@model List<GetProductByProductIdDto>
+
+<div class="w3l-agentsblock py-5" id="team">
+    <div class="container py-lg-5 py-md-4 py-2">
+        <h6 class="title-small text-center">İlanlar</h6>
+        <h3 class="title-big text-center mb-lg-5 mb-4">Kullanıcı İlanları</h3>
+
+<!-- blok -->
+        <div class="row pt-md-5 pt-4">
+            @foreach (var item in Model.Take(6))
+            {
+
+                <div class="col-lg-4 col-md-6 mb-3">
+                    <a href="@Url.Action("PropertySingle","Property",new {slug = item.SlugUrl, id = item.ProductID})">
+                        <div class="box16">
+                            <div class="rentext-listing-category"><span>@item.Title</span><span>category name</span></div>
+                            <img class="img-fluid" style="height:200px;width:700px" src="@item.CoverImage" alt="">
+                            <div class="box-content">
+                                <h3 class="title">₺  @item.Price</h3>
+                                <span class="post">@item.Address - @item.District / @item.City</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            }
+        </div>
+
+
+

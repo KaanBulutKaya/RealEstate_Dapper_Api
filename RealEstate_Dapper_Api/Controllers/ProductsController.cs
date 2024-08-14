@@ -124,5 +124,11 @@ namespace RealEstate_Dapper_Api.Controllers
             var values = await _productRepository.GetProductByCityWithCategoryAsync(city);
             return Ok(values);
         }
+        [HttpGet("GetProdcutByAppUser")]
+        public async Task<IActionResult> GetProdcutByAppUser(int id)
+        {
+            var values = await _productRepository.GetProdcutByAppUserID(id);
+            return Ok(values);
+        }
     }
 }
