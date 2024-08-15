@@ -1,0 +1,12 @@
+﻿@model List<ResultProductWithSearchListDto>
+
+div class="search mx-3">
+    <input class="search_box" type="checkbox" id="search_box">
+    <label class="fa fa-search" for="search_box"></label>
+    <div class="search_form">
+        <form asp-action="Search" asp-controller="Property" method="post" class="navbar-form">
+            <input type="text" name="searchKeyValue" placeholder="Arama..." class="form-control">
+            <button type="submit" class="btn btn-default">Ara</button>
+        </form>
+    </div>
+</div>

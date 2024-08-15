@@ -52,6 +52,26 @@ namespace ReakEstate_Dapper_Ui.Controllers
 			TempData["propertyCategoryId"] = propertyCategoryId;
 			TempData["city"] = city;
 			return RedirectToAction("PropertyListWithSearch", "Property");
-		}    
+		}
+        [HttpGet]
+        public async Task<PartialViewResult> PartialSearchNavbar()
+        {
+            var client = _httpClientFactory.CreateClient();
+            client.BaseAddress = new Uri(_apiSettings.BaseUrl);
+            var responseMessage = await client.GetAsync("Categories");
+            if (responseMessage.IsSuccessStatusCode)
+            {
+                var jsonData = await responseMessage.Content.ReadAsStringAsync();
+                var values = JsonConvert.DeserializeObject<List<ResultCategoryDtos>>(jsonData);
+                return PartialView(values);
+            }
+            return PartialView();
+        }
+        [HttpPost]
+        public IActionResult PartialSearchNavbar(string searchKeyValue)
+        {
+            TempData["searchKeyValue"] = searchKeyValue;
+            return RedirectToAction("PropertyListWithNavbarSearch", "Property");
+        }
     }
 }

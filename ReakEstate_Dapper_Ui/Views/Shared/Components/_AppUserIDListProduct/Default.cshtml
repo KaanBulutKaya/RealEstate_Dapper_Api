@@ -7,13 +7,13 @@
 
 <!-- blok -->
         <div class="row pt-md-5 pt-4">
-            @foreach (var item in Model.Take(6))
+            @foreach (var item in Model)
             {
 
                 <div class="col-lg-4 col-md-6 mb-3">
                     <a href="@Url.Action("PropertySingle","Property",new {slug = item.SlugUrl, id = item.AppUserID})">
                         <div class="box16">
-                            <div class="rentext-listing-category"><span>@item.Title</span><span>category name</span></div>
+                            <div class="rentext-listing-category"><span>@item.Title</span>@* <span>category name</span> *@</div>
                             <img class="img-fluid" style="height:200px;width:700px" src="@item.CoverImage" alt="">
                             <div class="box-content">
                                 <h3 class="title">₺  @item.Price</h3>

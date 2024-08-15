@@ -1,4 +1,6 @@
-﻿<section class="w3l-cover-3">
+﻿@model List<ResultCategoryDtos>
+
+<section class="w3l-cover-3">
 	<div class="cover top-bottom">
 		<div class="container">
 			<div class="middle-section text-center">
@@ -15,6 +17,7 @@
 					</div>
 					<form asp-action="PartialSearch" asp-controller="Default" class="w3l-cover-3-gd" method="post">
 						<input type="search" name="p" placeholder="Anahtar kelimeyi girin" required>
+
 						<span class="input-group-btn">
 							<select class="btn btn-default" name="ext" required>
 								<option selected="">Gayrimenkul Türü</option>

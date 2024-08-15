@@ -8,5 +8,9 @@ namespace ReakEstate_Dapper_Ui.ViewComponents.Layout
         {
         return View(); 
         }
+
+
+
+
     }
 }

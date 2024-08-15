@@ -1,9 +1,10 @@
-﻿<header id="site-header" class="fixed-top">
+﻿
+<header id="site-header" class="fixed-top">
     <div class="container">
         <nav class="navbar navbar-expand-lg stroke px-0">
             <h1>
                 <a class="navbar-brand" href="/Default/Index/">
-                    <span class="fa fa-home"></span> Real Estate
+                    <span class="fa fa-home"></span> Bulut Home
                 </a>
             </h1>
 
@@ -52,11 +53,12 @@
                     <input class="search_box" type="checkbox" id="search_box">
                     <label class="fa fa-search" for="search_box"></label>
                     <div class="search_form">
-                        <form action="error.html" method="GET">
-                            <input type="text" placeholder="Search"><input type="submit" value="search">
+                        <form asp-action="PartialSearchNavbar" asp-controller="Default" method="post">
+                            <input type="search" name="searchKeyValue"><input type="submit" value="search">
                         </form>
                     </div>
                 </div>
+
                 <!--//search-right-->
             </div>
 

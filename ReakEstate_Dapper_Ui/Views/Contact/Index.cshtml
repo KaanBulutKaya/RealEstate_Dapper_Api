@@ -1,4 +1,5 @@
-﻿
+﻿@model CreateCustomerMailDto
+
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_DefaultLayout.cshtml";
@@ -9,6 +10,8 @@
         </div>
     </div>
 </section>
+
+
     <section class="w3l-contact-7 pt-5" id="contact">
         <div class="contacts-9 pt-lg-5 pt-md-4">
             <div class="container">
@@ -19,19 +22,17 @@
                         <div class="col-lg-8">
                             <div class="contact-form">
                                 <h5 class="mb-2">İletişime Geçin</h5>
-                                <form action="https://sendmail.w3layouts.com/submitForm" method="post" class="">
+                                <form method="post">
                                     <div class="form-grid">
                                         <div class="input-field">
-                                            <input type="text" name="w3lName" id="w3lName" placeholder="İsminiz"
-                                                   required="">
+                                        <input type="text" asp-for="UserName" placeholder="İsminiz" required="">
                                         </div>
                                         <div class="input-field">
-                                            <input type="email" name="w3lSender" id="w3lSender" placeholder="Email"
-                                                   required="">
+                                        <input type="text" asp-for="Email" placeholder="Email" required="">
                                         </div>
                                     </div>
                                     <div class="input-field mt-4">
-                                        <textarea name="w3lMessage" id="w3lMessage" placeholder="Mesaj Kısmı"></textarea>
+                                    <textarea type="text" asp-for="Message" placeholder="Mesaj Kısmı"></textarea>
                                     </div>
                                     <button type="submit" class="btn btn-primary btn-style mt-3">Gönder</button>
                                 </form>

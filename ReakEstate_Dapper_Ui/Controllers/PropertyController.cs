@@ -47,6 +47,22 @@ namespace ReakEstate_Dapper_Ui.Controllers
 			}
 			return View();
 		}
+        public async Task<IActionResult> PropertyListWithNavbarSearch(string searchKeyValue)
+        {
+            ViewBag.searchKeyValue = TempData["searchKeyValue"];
+
+            searchKeyValue = TempData["searchKeyValue"].ToString();
+
+            var client = _httpClientFactory.CreateClient();
+            var responseMessage = await client.GetAsync($"https://localhost:44350/api/Products/ResultProductWithNavbarSearchList?searchKeyValue={searchKeyValue}");
+            if (responseMessage.IsSuccessStatusCode)
+            {
+                var jsonData = await responseMessage.Content.ReadAsStringAsync();
+                var values = JsonConvert.DeserializeObject<List<ResultProductWithSearchListDto>>(jsonData);
+                return View(values);
+            }
+            return View();
+        }
 
         [HttpGet("property/{slug}/{id}")]
         public async Task<IActionResult> PropertySingle(string slug,int id)
@@ -109,5 +125,7 @@ namespace ReakEstate_Dapper_Ui.Controllers
 
             return title;
         }
+
+
     }
 }
